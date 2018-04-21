@@ -23,10 +23,12 @@ export default {
           console.log(index)
       },
       addnum(index){
-           console.log(index)
-           let value=this.demo[index]++;
-           Vue.set(this.demo,this.demo[index],value)
+           //console.log(index)
+           let value=this.demo[index]+1;
+                Vue.set(this.demo,index,value)
            console.log(this.demo)
+           
+         
       }
   }
 }
