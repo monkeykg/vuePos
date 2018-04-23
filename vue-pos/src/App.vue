@@ -1,12 +1,17 @@
 <template>
   <div id="app">
-    <leftNav></leftNav>
-    <!-- <router-view/> -->
+    <!-- 左侧导航 -->
+     <leftNav></leftNav>
+     <!-- 操作区域 -->
+     <div class="main">
+       <router-view></router-view>
+     </div>
+    
   </div>
 </template>
 
 <script>
-import leftNav from '@/components/leftNav/leftNav'
+import leftNav from '@/components/common/leftNav.vue'
 export default {
   name: 'App',
   components:{
@@ -17,7 +22,14 @@ export default {
 
 <style>
 #app{
-  width: 100%;
+   font-family: 'Microsoft YaHei','Avenir', Helvetica, Arial, sans-serif;
   height:100%;
+}
+.main{
+  float:left;
+  width:95%; 
+  background-color: #EFF2F7;
+  height:100%;
+  overflow: auto;
 }
 </style>
