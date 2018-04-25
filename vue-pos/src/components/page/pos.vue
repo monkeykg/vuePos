@@ -11,8 +11,8 @@
                               <el-table-column label='金额' prop='price' width='70' ></el-table-column>
                               <el-table-column label='操作' width='90' fixed='right'>
                                   <template slot-scope="scope">
-                                      <el-button type='text' size='small'>删除</el-button>
-                                      <el-button type='text' size='small'>增加</el-button>
+                                      <el-button type='text' size='small' @click=" delSingleGoods(scope.row)">删除</el-button>
+                                      <el-button type='text' size='small' @click="addOrderList(scope.row)">增加</el-button>
                                   </template>
                               </el-table-column>
                           </el-table>
@@ -144,7 +144,6 @@ export default {
         if(ishave){
                 let arr = this.tableData.filter(o =>o.goodsId == value.goodsId);
                  arr[0].count++;
-                 console.log(arr[0].count)
         }else{
             let newGoods={
                 goodsId:value.goodsId,goodsName:value.goodsName,price:value.price,count:1
@@ -164,8 +163,19 @@ export default {
                  this.totalMoney+=i.count*i.price;
             }
             // console.log(this.totalCount)
-        }
-       
+        },
+       delSingleGoods(goods){
+           this.tableData=this.tableData.filter(a=>
+               a.goodsId !=goods.goodsId
+           )
+        //    数量和金额的计算
+         this.totalCount=0; //汇总数量清0
+            this.totalMoney=0;
+             for(let i of this.tableData){
+                 this.totalCount+=i.count;
+                 this.totalMoney+=i.count*i.price;
+            }
+       }
     }
     
     
@@ -216,7 +226,7 @@ export default {
         text-align: center;
     }
     .goods-type-list li img{
-        width:100%;
+        width:10%;
     }
 </style>
 
