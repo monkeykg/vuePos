@@ -226,7 +226,7 @@ export default {
         text-align: center;
     }
     .goods-type-list li img{
-        width:10%;
+        width:100%;
     }
 </style>
 
